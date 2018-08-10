@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>简单小函数2</title>
+ </head>
+ <body>
+  
+
+  <script>
+      //查找重复元素
+   /*  function duplicates(arr){
+		  var a = [],b = [];
+		  for(var i = 0;i < arr.length;i++){
+			  if(!b[arr[i]]){
+				  b[arr[i]]=1;
+				  continue;
+			  }
+			  b[arr[i]]++;
+		  }
+		  
+		  for(var i = 0;i < b.length;i++){
+			 // alert(i+"|"+b[i]);
+			  if(b[i] > 1){
+				  a.push(i);
+				  
+			  }
+		  }
+		  //return b.length;
+		  return a;
+	  }*/
+	  //arr.indexOf(elem) !== arr.lastIndexOf(elem) 不相等说明数组中item不止1个；result.indexOf(elem) == -1; 是判断result新数组中还没有这个item，之后才能向里添加item
+	/*  function duplicates(arr){
+		  var result = [];
+		  arr.forEach(function(elem){
+			  if(arr.indexOf(elem) != arr.lastIndexOf(elem) && result.indexOf(elem) == -1){result.push(elem);}
+		  });
+		  return result;
+	  }
+	  var arr = [1,2,4,5,2,3,1,8,6,8];
+	  alert(duplicates(arr));*/
+	  //流程控制实现 fizzBuzz 函数，参数 num 与返回值的关系如下：
+	  //1、如果 num 能同时被 3 和 5 整除，返回字符串 fizzbuzz
+	  //2、如果 num 能被 3 整除，返回字符串 fizz
+	  //3、如果 num 能被 5 整除，返回字符串 buzz
+	  //4、如果参数为空或者不是 Number 类型，返回 false
+	  //5、其余情况，返回参数 num
+	 /* function fizzBuzz(num){
+		  var a = num % 3;
+		  var b = num % 5;
+		  if(num == null || typeof num != "number") return false;
+		  else if(a == 0 && b == 0)return "fizzbuzz";
+		  else if(a == 0 && b != 0)return "fizz";
+		  else if(a != 0 && b == 0) return "buzz";
+		  else return num;
+	  }*/
+	  //isNaN()如果 x 是特殊的非数字值 NaN（或者能被转换为这样的值），返回的值就是 true。如果 x 是其他值,则返回 false。
+	  //alert(isNaN("23of"));
+	  /*function fizzBuzz(num){
+		  var a = num % 3;
+		  var b = num % 5;
+		  switch(true){
+			 case typeof(num) !=="number": return false;
+			  //case isNaN(num):return false; 参照上面对isNaN的讲解，可知这条语句不能代替上面的语句
+			  case a == 0 && b == 0:return "fizzbuzz";
+			  case a == 0 : return "fizz";
+			  case b == 0 : return "buzz";
+			  default: return num;
+		  }
+	  }
+	  alert(fizzBuzz(true));*/
+	  //返回函数
+	  /*实现函数 functionFunction，调用之后满足如下条件：
+      1、返回值为一个函数 f
+      2、调用返回的函数 f，返回值为按照调用顺序的参数拼接，拼接字符为英文逗号加一个空格，即 ', '
+      3、所有函数的参数数量为 1，且均为 String 类型
+	  输入functionFunction('Hello')('world'); 输出Hello, world
+	  */
+	 /* function functionFunction(str){
+		  var ret = Array.prototype.slice.call(arguments).join(', ');
+		  var temp = function(str){
+			  ret = [ret,Array.prototype.slice.call(arguments).join(', ')].join(', ');
+			  return temp;
+		  }
+		  temp.toString = function(){
+			  return ret;
+		  };
+		  return temp;
+	  }
+	  alert(functionFunction(1)(2)("sdf")(4));*/
+	  //实现一个函数，满足 add(1)(2)//3 add(1,2,3)(10)//16 add(1)(2)(3)//6
+	  /*function add(){
+		  //将argument转换成数组，
+		  var args = Array.prototype.slice.call(arguments);
+		  var fn = function(){
+			  //拼接多次调用的参数为数组
+			  var arg_fn = Array.prototype.slice.call(arguments);
+			  //递归调用add
+			  return add.apply(null,args.concat(arg_fn));
+		  }
+		  //最后一次调用fn时，自动调用valueOf
+		  fn.valueOf = function(){
+			  return args.reduce(function(a,b){return a+b;});
+		  }
+		  return fn;
+	  }
+	  
+	  alert(add(1)(2)(3));//6
+	  alert(add(1,2,3),(12));//18*/
+	  //js判断整数 正则表达式 | 取整后判断与原值是否相同
+	  //方法一
+	  function isInteger(num){
+		//  var patt = /^-?\d+$/;
+		//  if(patt.test(num.toString())){alert(num+"是一个整数")}
+		  if("/^-?\d+$/".test(num.toString())){alert(num+"是一个整数")}
+		  else alert(num + "不是一个整数");
+	  }
+	  //方法二
+	 /* function isInteger(num)
+	  {
+		  if(parseInt(num) == num){
+			  alert(num+"是一个整数");
+		  }
+		  else
+		  {
+			  alert(num+"不是一个整数");
+		  }
+	  }
+	  isInteger(1);//1是一个整数
+	  isInteger(1.2);//1.2不是一个整数
+	  isInteger(1.5);//1.5不是一个整数*/
+	  //求a和·b相乘的值，a和b可能是小数，需要注意结果的精度问题
+	 /* function multiply(a,b){
+		  var stra = a.toString();
+		  var strb = b.toString();
+		  
+		  //return parseFloat(a * b).toFixed(len);
+		  //判断是否为整数
+		  
+		  if(parseInt(a * b) == a * b) return a * b;
+		  else {
+			  var len = Math.max(stra.length-stra.indexOf('.')-1,strb.length-strb.indexOf('.')-1);
+			  return parseFloat(a * b).toFixed(len);
+		  }
+	  }
+	  alert(multiply(1.2,0.0001));//0.0001
+	  alert(multiply(1.5,0.0001));//0.0002???what 怎么会这样
+	  //toFixed()会进行四舍五入所以重写toFixed()函数
+	  alert(multiply(2,5));
+	  Number.prototype.toFixed = function(fractionDigits){
+		  return (parseInt(this * Math.pow(10,fractionDigits)+0.5)/Math.pow(10,fractionDigits)).toString();
+	  }*/
+	  //改变函数上下文
+	  function alterContext(fn,obj){
+		 // return fn.apply(obj,arguments);
+		 //return fn.call(obj,arguments);
+		// return fn.call(obj);
+		// return fn.apply(obj);
+		//return fn.bind(obj);//function(){native code}.bind()返回的是一个函数，所以需要立即执行，改为下面的代码
+		return fn.bind(obj)();
+	  }
+	  alert(alterContext(function(){return this.greeting + ', '+this.name +'!';},{name:'Rebecca',greeting:'Yo'}));
+  </script>
+ </body>
+</html>

@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  <ul>
+      <li>click me</li>
+	  <li>click me</li>
+	  <li>click me</li>
+	  <li>click me</li>
+  </ul>
+  <div id = "info" style = "display:block"><p>请填写</p></div>
+  <script>
+  /*
+      var elements = document.getElementsByTagName("li");
+	  var length = elements.length;
+	  for(var i = 0;i < length;i++){
+		  elements[i].onclick = function()
+		  {
+			  alert(i);//4 4 4 4
+		  }
+	  }*/
+	  //js函数作用域的问题
+	 /* var name = "global";
+	  if(true){
+		  var name = "local";
+		  alert("1"+name);//name=local
+	  }
+	  alert("2"+name);//name=local 全局变量被覆盖
+	  //如果使用var定义变量，那么程序会强制定义一个新变量，
+	  //如果没有使用var定义变量，系统会优先在当前上下文中搜索是否存在该变量，只有在该变量不存在的前提下，系统才会重新定义一个新变量
+	  var flag = true;
+	  if(flag){
+		  function  t(){
+			  flag = false;
+		  }
+		  t();
+		  alert(flag);//false 有一个问题哈，为什么加上下面的代码一起执行，flag=true呢，奇怪
+	  }
+	  var flag1 = true;
+	  if(flag1){
+		  function t(){
+			  var flag1 = false;
+		  }
+		  t();
+		  alert(flag1);//true;
+	  }
+	  //有一种特殊情况，如果函数的参数名和全局变量相同时，在函数内部不写var,
+	  //里面的变量会认为是形参的调用，而不会覆盖全局变量
+	  var flag = true;
+	  function t(flag){
+		  flag = false;
+	  }
+	  t();
+	  alert(flag);//true;*/
+	  /*try{var res = (function(){
+		  var x = foo();
+		  var foo = function foo(){
+			  return "foobar";
+		  };
+		  return x;
+	  })();alert(res);}catch(e){alert(e)}
+	  //Type Error*/
+	  /*var res= (function(){ 
+		  var foo = function foo(){
+			  return "foobar";
+		  };
+		  var x = foo();
+		  return x;
+	  })();
+	  alert(res);
+	  var res = (function(){
+		  var x = foo;
+		  var foo = 5;
+		  return x;
+	  })();
+	  alert(res);//undefined 变量声明提升，但是定义不会提升*/
+	//函数作用域的问题
+	/*  var color = 'green';
+	  var test4399 = {
+		  color:'blue',
+		  getColor:function(){
+			  var color = 'red';
+			  alert(this.color);
+		  }
+	  }
+	  var getColor = test4399.getColor;
+	  getColor();//green
+	  test4399.getColor();//blue*/
+	  //typeof 返回值
+	 /* alert(typeof Symbol('foo'));//symbol
+	  alert(typeof NaN);//number
+	  alert(typeof null);//object
+	  alert(typeof x);//undefined
+	  alert(typeof true);//boolean
+	  alert(typeof [1,2.3]);//object
+	  alert(typeof function s(x){alert(x);});//function
+	  alert(typeof (function s(x){alert(x)})());//undefined
+	  alert(typeof String('abc'));//string
+	  alert(typeof new String('abc'));//object
+	  alert(typeof(typeof 1));//string typeof总是返回一个字符串
+	  alert(typeof Symbol());//symbol
+	  alert(typeof Symbol('foo'));//symbol
+	  alert(typeof Symbol.iterator);//symbol*/
+	  //关于函数声明
+	 /* var f = function g(){
+		  //return 23;
+		  return true;
+	  };
+	  alert(typeof f);//function
+	  alert(typeof f());//boolean
+	  alert(typeof g);//undefined
+	  //ReferenceError :g未定义
+	  try{
+		  alert(typeof g());
+	  } catch(e){
+		  alert(e);
+	  }
+	  var find = function sum(){
+		  return function sub(a,b){
+			  return a-b;
+		  }
+	  }
+	  alert(typeof find);//function
+	  alert(typeof find());//function
+	  alert(typeof sum);//undefined
+	  try{
+		  alert(typeof sum());
+	  }catch(e){alert(e);}//ReferenceError :"sum"未定义
+	  alert(typeof sub);//undefined;
+	  try{
+		  alert(typeof sub());
+	  }catch(e){alert(e);}//ReferenceError :"sub"未定义
+	  var f2 = function g2()
+	  {
+		  alert("and"+"you");
+	  }
+	  alert(typeof f2());//undefined*/
+	  //
+	  /*function assert(aval){
+		  if(aval){
+			  return true;
+		  }
+		  return false;
+	  }
+	  alert(assert(false));//false
+	  alert(assert(true));//true
+	  alert(assert("false"));//true
+	  alert(assert(""));//false
+	  alert(assert("undefined"));//true
+	  alert(assert(undefined));//false
+	  alert(assert(null));//false
+	  alert(assert(3));//true*/
+
+	  //定义函数的三种方式
+//函数声明
+	/*  function add(a,b){return a+b;}
+	  //函数表达式
+	  var add = function(a,b) {return a+b};
+	  //构造函数
+	  var add = new Function('a','b','return a+b;');*/
+//for...of VS for...in
+  /*    let nicknames1 = ['di','boo','punkeye'];
+	  nicknames1.size = 3;
+	  for(let nickname1 of nicknames1){
+		  alert(nickname1);//di boo punkeye 
+	  }
+      let nicknames2 = ['di','boo','punkeye'];
+	  nicknames2.size = 3;
+	  for(let nickname2 in nicknames2){
+		  alert(nickname2);//0 1 2 size(IE会报错)
+	  }*/
+//假设 output 是一个函数，输出一行文本。下面的语句输出结果是什么？
+//output(typeof (function() {output(“Hello World!”)})());
+    /*  alert(typeof(function(){}));//function
+	  alert(typeof(function(){})());//undefined*/
+//
+   /*   for(var i = 0;i < 5;i++){
+		  setTimeout(function(){
+			  alert(i + ' ');
+		  },100);
+	  }//5 5 5 5 5
+	  //利用匿名函数创建立即执行函数
+	  for(var i = 0;i < 5;i++){
+		  (function(num)
+		  {	  setTimeout(function(){
+				  alert(num+' ');
+			  },100);
+		  })(i);//0 1 2 3 4
+	  }
+	//有错 不知为何，结果怎么每次都不一样
+	for(let i = 0;i < 5;i++){
+		  setTimeout(function(){
+			  alert(i+' ');
+		  },100);
+	  }//*/
+//原型
+   /* var A = {n:4399};
+	var B = function(){this.n = 9999};
+	var C = function(){var n = 8888;};
+	B.prototype = A;
+	C.prototype = A;
+	var b = new B();
+	var c = new C();
+	A.n++;
+	alert(b.n);//9999
+	alert(c.n);//4400*/
+//innerHTML,innerText,outerHTML
+    //设置或获取位于对象起始和结束标签内的HTML
+ /*   alert(document.getElementById("info").innerHTML);
+	//设置或获取对象及其内容的HTML
+	alert(document.getElementById("info").outerHTML);
+	//设置或获取位于对象起始和结束标签内的文本
+	alert(document.getElementById("info").innerText);
+	//设置（包括标签）或获取（不包括标签）对象的文本
+	document.getElementById("info").outerText = "什么";;*/
+//javascript中的document.getElementById的返回值的类型
+ //   alert(typeof document.getElementById("info"));//object
+//
+  /*  alert([]?true:false);//true
+	alert([] == false?true:false);//true
+	alert({}?true:false);//true
+	alert({} == false?true:false);//false;
+	alert({} == NaN?true:false);//false
+	alert("123ad" == "123"?true:false);//false;
+	alert("123ad" == 123?true:false);//false
+	alert(Number("123ad"));//NaN
+	alert(Number({}));//NaN
+	alert(Number([]));//0*/
+  </script>
+ </body>
+</html>

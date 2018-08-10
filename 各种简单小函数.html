@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>各种简单小函数</title>
+  
+ </head>
+ <body>
+  <form id="login_form">
+      <p><span>用户名</span><input type="text" name="username"></p>
+	  <p><span>密码</span><input type="text" name="password"></p>
+	  <button type="submit">提交</button>
+  </form>
+
+  <script>
+  //判断是否是string JS里面string的初始化有两种方式，直接赋值和String对象的实例化
+     /* function isString(str){
+          return ((str instanceof String) || (typeof str).toLowerCase() == 'string');
+	  }
+	  var s1 = "abc",
+	      s2 = new String("abc");
+	  alert(isString(s1));
+	  alert(isString(s2));*/
+	 //给Array本地对象添加一个原型方法，用于删除数组条目中重复的条目，返回值是一个包含被删除的重复条目的新数组
+	/* Array.prototype.distinct = function() {
+		 var ret = [];
+		 for(var i=0;i<this.length;i++){
+			 for(var j=i+1;j<this.length;){
+				 if(this[i] === this[j]){
+					 ret.push(this.splice(j,1)[0]);
+				 } else {
+					 j++;
+				 }
+			 }
+		 }
+		 return ret;
+	 }
+	 //for test
+	 alert(['a','b','c','d','a','e','b','d'].distinct());*/
+	 //mySort()使传入参数按照从小到大的顺序显示出来  当为字符串时比较有错误
+	/* function mySort(){
+		 var tags = new Array();
+		// for(var i=0;i<arguments.length;i++){
+		//	 tags.push(arguments[i]);
+		// }
+		tags = Array.prototype.slice.call(arguments).sort(function(x,y){return x-y});
+		// tags.sort(function(compare1,compare2){
+		//	 return compare1-compare2;
+		// });
+		 return tags;
+	 }
+	 //for test
+	 var result = mySort(50,23,45,1,3,46,100);
+	 //var result = mySort('ed','as','df','bg');
+	 alert(result);*/
+	 //Javascript实现用户登录验证的函数
+	/* var getCheckObject = function(){
+		 var tipP = tip = document.createElement("p");
+		 tip.appendChild(document.createTextNode("密码错误"));
+		 var tipU = tip =document.createElement("p");
+		 tip.appendChild(document.createTextNode("用户名错误"));
+		 function addErrorTip(node, type){
+			 node.className += ' ' + 'error' +' ';
+			 if(type == "username"){
+				 node.parentNode.appendChild(tipU);
+			 } else if (type == "password"){
+				 node.parentNode.appendChild(tipP);
+			 }
+		 }
+		 function removeErrorTip(node, type){
+			 node.className = "";
+			 if(type === "username") {
+				 node.parentNode.removeChild(tipU);
+			 }else if(type === "password"){
+				 node.parentNode.removeChild(tipP);
+			 }
+		 }
+		 function isValidName(name){
+			 return false;
+		 }
+		 function isValidPassword(password){
+			 var lenIsEnough = password.length > 6;
+			 var hasDigital = /{d}+/.test(password);
+			 var hasCharater = /{w}+/.test(password);
+			 return lenIsEnough && hasDigital && hasCharater;
+		 }
+		 return {
+			 addErrorTip: addErrorTip,
+			 removeErrorTip: removeErrorTip,
+			 isValidName: isValidName,
+			 isValidPassword: isValidPassword
+		 };
+	 }
+	 var checkObj = getCheckObject();
+	 var form = document.forms['login_form'];
+	 var username = form['username'];
+	 var password = form['password'];
+	 form.addEventListener('submit', function(event){
+		 if(!checkObj.isValidName(username.value)){
+			 checkObj.addErrorTip(username,'username');
+			 event.preventDefault();
+		 }
+		 if(!checkObj.isValidPasswod(password.value)){
+			 checkObj.addErrorTip(password, 'password');
+			 event.preventDefault();
+		 }
+	 },false);
+	 form.addEventListener('reset',function(event){
+		 checkObj.removeErrorTip(username,'username');
+		 checkObj.removeErrorTip(password,'password');
+	 },false);
+	 username.addEventListener('blur',function(event){
+		 if(!checkObj.isValidName(username.value)){
+			 checkObj.addErrorTip(username,'username');
+		 }
+	 },false)
+	 username.addEventListener('focus', function(event) {
+        checkObj.removeErrorTip(username, 'username');
+    }, false);
+    password.addEventListener('blur', function(event) {
+        if (!checkObj.isValidPassword(password.value)) {
+            checkObj.addErrorTip(password, 'password');
+        }
+    }, false)
+    password.addEventListener('focus', function(event) {
+        checkObj.removeErrorTip(password, 'password');
+    }, false);*/
+	//实现fibonacci函数[1,1,2,3,5,8,13,21,34]
+/*	function fibonacci(count){
+		if(count < 0) return 0;
+		if(count <= 1) return 1;
+		var first = 1;
+		var second = 1;
+		var third = 0;
+		for(var i = 2;i <= count;i++){
+			third = first + second;
+			first = second;
+			second = third;
+		}
+		return third;
+	}
+	alert(fibonacci(4));
+	//另一种 递归
+	function fib(count){
+		var count = parseInt(count);
+		if(isNaN(count)||count<0){
+			return 0;
+		}
+		function f(count){
+			if(count <= 1) return 1;
+			return f(count-1) + f(count-2);
+		}
+		return f(count);
+	}
+	alert(fib(4));*/
+	//现在有一个字符串，你要对这个字符串进行n次操作，每次操作给出两个数字（p,l）表示当前字符串从下标为p的字符开始的长度为l的一个子串，你要将这个字串左右翻转后插在这个子串原来位置的正后方，求最后得到的字符串是什么
+	#include<iostream>
+	#include<string>
+	#include<vector>
+	#include<algorithm>
+	using namespace std;
+	int main()
+	{
+		string st;
+		while(cin>>st)
+		{
+			int n;
+			cin>>n;
+			while(n--)
+			{
+				int beg,len,index;
+				cin>>beg>>len;
+				string temp = st.substr(beg, len);
+				index = beg + len;
+				reverse(temp.begin(), temp.end());
+				st.insert(index, temp);
+			
+			}
+			cout << st << endl;
+		}
+		return 0;
+	}
+
+  </script>
+ </body>
+</html>

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>第十二章DOM2和DOM3</title>
+  <style>
+      div.box{background-color:blue;width:100px;height:200px;}
+  </style>
+ </head>
+ <body>
+  <div id="myDiv" style="background-color:blue;margin:5px;"></div>
+  <div class = "box">深圳</div>
+ <!-- <div id="div1">
+      <p><b>Hello</b> world!</p>
+	  <ul>
+	      <li>List Item 1</li>
+		  <li>List Item 2</li>
+		  <li>List Item 3</li>
+	  </ul>
+  </div>-->
+  <div id="div1"><p><b>Hello</b> world!</p><ul><li>List Item 1</li><li>List Item 2</li><li>List Item 3</li></ul>
+  </div>
+  <p>&sup;&nsub;&hearts;</p>
+  <script>
+    /* var supportsDOM2Core = document.implementation.hasFeature("Core","2.0");
+	  var supportsDOM3Core = document.implementation.hasFeature("Core", "3.0");
+	  var supportsDOM2HTML = document.implementation.hasFeature("HTML", "2.0");
+	  var supportsDOM2Views = document.implementation.hasFeature("Views", "2.0");
+	  var supportsDOM2XML = document.implementation.hasFeature("XML", "2.0");
+	  
+	  alert(supportsDOM2Core);
+	  alert(supportsDOM3Core);
+	  alert(supportsDOM2HTML);
+	  alert(supportsDOM2Views);
+	  alert(supportsDOM2XML);
+	  var supportsDOM2CSS = document.implementation.hasFeature("CSS", "2.0");
+	  var supportsDOM2CSS2 = document.implementation.hasFeature("CSS2","2.0");
+	  alert(supportsDOM2CSS);
+	  alert(supportsDOM2CSS2);
+	  var supportsDOM2StyleSheets = document.implementation.hasFeature("StyleSheets", "2.0");
+	  alert(supportsDOM2StyleSheets);
+	  //检测遍历能力的支持情况
+	  var supportsTravels = document.implementation.hasFeature("Traversal", "2.0");
+	  var supportsNodeIterator = (typeof document.createNodeIterator == "function");
+	  var supportsTreeWalker = (typeof document.createTreeWalker == "function");
+	  alert(supportsNodeIterator);
+	  alert(supportsTreeWalker);
+	  //检测浏览器是否支持范围
+	  var supportsRange = document.implementation.hasFeature("Range", "2.0");
+	  var alsoSupportsRange = (typeof document.createRange == "function");
+	  alert(supportsRange);
+	  alert(alsoSupportsRange);*/
+	  //确定浏览器是否支持焦点事件
+	  var SupportedFocus = document.implementation.hasFeature("FocusEvent", "3.0");
+	  alert(SupportedFocus);//true
+	  //访问元素的样式
+	  /*var myDiv = document.getElementById("myDiv");
+	  myDiv.style.backgroundColor = "red";
+	  myDiv.style.width = "200px";
+	  myDiv.style.height = "100px";
+	  myDiv.style.border = "1px solid black";
+	  alert(myDiv.style.cssText);
+	  var prop,value;
+	  for(var i=0,len=myDiv.style.length;i<len;i++){*/
+		  //alert(myDiv.style[i]);
+		  //alert(myDiv.style.item(i));
+		  //prop = myDiv.style[i];
+		  //value = myDiv.style.getPropertyValue(prop);
+		 // alert(prop + ":" + value);
+		 //出错value = myDiv.style.getPropertyCSSValue(prop);
+		// alert(prop + ":" + value.cssText + "(" +value.cssValueType + ")");
+		//移除边框属性
+		//myDiv.style.removeProperty("border");
+		//计算样式
+		/*var computedStyle = document.defaultView.getComputedStyle(myDiv,null);
+		alert(computedStyle.backgroundColor);
+		alert(computedStyle.width);
+		alert(computedStyle.border);
+		alert(computedStyle.margin);*/
+		//操作样式表
+
+	  //}
+	  //取得样式表对象的函数
+	 /* function getStyleSheet(element){
+		  return element.sheet || element.styleSheet;
+	  }*/
+	/*  var sheet = document.styleSheets[0];
+	  var rules = sheet.cssRules || sheet.rules;
+	  var rule = rules[0];
+	  //获得规则的样式信息
+	  alert(rule.selectorText);
+	  alert(rule.style.cssText);
+	  alert(rule.style.backgroundColor);
+	  alert(rule.style.width);
+	  alert(rule.style.height);*/
+	  //修改样式
+	//  rule.style.backgroundColor = "red";
+	  //创建规则insertRule() 考虑兼容性问题，写一个新的函数
+	/*  function insertRule(sheet, selectorText, cssText, position){
+		  if(sheet.insertRule){
+			  sheet.insertRule(selectorText + "{" + cssText + "}",position);
+		  } else if(sheet.addRule){
+			  sheet.addRule(selectorText,cssText,position);
+		  }
+	  }
+	  insertRule(sheet, "div.box", "color:white;",1);
+	  //删除规则 deleteRule(0)//DOM方法  removeRule() 仅对IE有效
+	  function deleteRule(sheet, index){
+		  if(sheet.deleteRule){
+			  sheet.deleteRule(index);
+		  } else if(sheet.removeRule){
+			  sheet.removeRule(index);
+		  }
+	  }*/
+	  //元素大小
+	  //偏移量 包括元素在屏幕上占用的所有可见的空间，元素的可见大小由其高度、宽度决定，包括所有的内边距、滚动条和边框大小 不包括外边距
+	  //客户区大小 指的是元素内容及其内边距所占据的空间大小 clientWidth clientHeight
+	 /* function getViewport(){
+		  if(document.compatMode == "BackCompat"){
+			  return {
+				  width: document.body.clientWidth,
+				  height: document.body.clientHeight
+			  };
+		  }else {
+			  return {
+				  width: document.documentElement.clientWidth,
+				  height:document.documentElement.clientHeight
+			  };
+		  }
+	  }*/
+	  //滚动大小
+	  //scrollHeight 在没有滚动条的情况下，元素内容的总高度
+	  //scrollWidth 在没有滚动条的情况下，元素的内容的总宽度
+	  //scrollLeft 被隐藏在内容区域左侧的像素数
+	  //scrollTop 被隐藏在内容区域上方的像素数
+	  //遍历
+	  //NodeIterator TreeWalker
+	  /*var div = document.getElementById("div1");
+	  var filter = function(node){
+		  return node.tagName.toLowerCase() == "li" ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+	  };
+	  //返回div元素中的所有元素
+	  //var iterator = document.createNodeIterator(div, NodeFilter.SHOW_ELEMENT, null,false);
+	  //返回遍历中遇到的li元素
+	  //var iterator = document.createNodeIterator(div,NodeFilter.SHOW_ELEMENT,filter, false);
+	  //var walker = document.createTreeWalker(div, NodeFilter.SHOW_ELEMENT, filter, false );
+	  var node = iterator.nextNode();
+	  while(node != null){
+		  alert(node.tagName);
+		  node = iterator.nextNode();
+	  }*/
+	  //范围(未完结)
+	  //selectNode 选择整个节点 selectNodeContents 选择节点的子节点
+	 /* var range1 = document.createRange(),
+	      range2 = document.createRange();
+		  p1 = document.getElementById("p1");
+	  range1.selectNode(p1);
+	  range2.selectNodeContents(p1);*/
+	  
+  </script>
+ </body>
+</html>

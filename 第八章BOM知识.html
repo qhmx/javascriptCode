@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>第八章BOM知识</title>
+  <!--
+  window对象，表示浏览器的一个实例，既是通过JavaScript访问浏览器窗口的一个接口，又是ECMAScript规定的Global对象，因此，所有在全局作用域中声明的变量、函数都会变成window对象属性和方法
+  //定义全局变量和在window对象上直接定义属性有一点差别，全局变量不能通过delete操作符删除，而直接在window对象上定义的属性可以
+  //如果页面中包含框架，则每个框架都有自己的window对象，并且保存在frames集合中。
+  //moveTo()和moveBy(), resizeTo()和resizeBy(),都不适用于框架，只能对外层的window对象使用
+  //targer的一些特殊值：
+  _blank : 在新窗口中打开被链接文档
+  _self : 在被点击时的同一框架中打开被链接文档
+  _parent : 在父框架中打开被链接文档
+  _top : 在窗口主体中打开被链接文档
+  -->
+  <script>
+      //使用下列代码跨浏览器取得窗口左边和上边的位置
+	/*  var leftPos = (typeof window.screenLeft == "number") ? window.screenLeft : window.screenX;
+	  var RightPos = (typeof window.screenTop == "number") ? window.screenTop : window.screenY;
+	  //使用下列代码跨浏览器取得页面视口大小
+	  var pageWidth = window.innerWidth,
+	      pageHeight = window.innerHeight;
+	  if (typeof pageWidth != "number")
+	  {
+		  if(documet.compatMode == "CSS1Compat"){
+			  pageWidth = document.documentElement.clientWidth;
+			  pageHeight = document.documentElement.clientHeight;
+		  }else {
+			  pageWidth = document.body.clientWidth;
+			  pageHeight = document.body.clientHeight;
+		  }
+	  }
+	  
+	  //使用下列的代码确定弹出的窗口是否被屏蔽了
+	  var blocked = false;
+	  try {
+	      var wrox = window.open("http://www.wrox.com","_blank");
+		  if(wrox == null) {
+			  blocked = true;
+		  } 
+	  }catch (ex) {
+	      blocked = true;
+	  }
+	  if(blocked){
+		  alert("The popup was blocked!");
+	  }*/
+	  //超时调用和间歇调用
+	  //超时调用实在指定的时间执行代码，而间歇调用是每隔指定的时间就执行一次代码，包括两个参数，要执行的代码和以毫秒表示的时间,第二个时间是告诉Javascript再过多长时间把当前任务添加到队列中，如果队列是空的，则立即执行，否则要等前面的代码执行完后再执行 setTimeout() clearTimeOout()
+	 /* setTimeout(function() {
+		  alert("hello world!");
+	  },10000);*/
+	  //间歇调用 setInterval() clearInterval()
+	/*  var num = 0;
+	  var max = 10;
+	  function incrementNumber() {
+		  num++;
+		  if(num == max) {
+			  clearInterval(intervalId);
+			  alert("Done");
+		  }
+	  }
+	  intervalId = setInterval(incrementNumber,100);*/
+	  //间歇调用存在的问题，后一个间歇调用可能会在前一个间歇调用结束之前启动，所以不建议使用间歇调用，使用超时调用模拟间歇调用
+	/*  var num = 0;
+	  var max = 10;
+	  function incrementNumber() {
+		  num++;
+		  if(num < max) {
+			  setTimeout(incrementNumber,1000);
+		  }else
+		  {
+			  alert("Done");
+		  }
+	  }
+	  setTimeout(incrementNumber,1000);*/
+	  //alert,confirm,prompt对话框
+	/*  if(confirm("Are you sure?")) {
+		  alert("I'm so glad you're sure!");
+	  } else {
+		  alert("I'm so sorry to hear you're not sure!");
+	  }*/
+	/*  var result = prompt("What is your name?","");
+	  if(result !== null) {
+		  alert("Welcome, " + result);
+	  }*/
+	  //location对象
+	  //location对象提供了与当前窗口加载的文档有关信息，还提供一次导航功能，location对象既是window对象的属性，也是document对象的属性
+	  //location.hash location.host location.hostname location.href location.pathname location.port location.protocal location.search
+	  //查询字符串参数 用来解析查询字符串，然后返回包含所有参数的一个对象
+	 /* function getQueryStringArgs() {
+		  var gs = (location.search.length > 0 ? location.search.substring[1] : ""),
+		  //保存数据的对象
+		  args = {},
+		  //取得每一项
+		  items = gs.length ? gs.split("&") : [],
+		  item = null,
+		  name = null,
+		  value = null,
+		  //在for循环中使用
+		  i = 0,
+		  len = items.length;
+		  //逐个将每一项添加到args对象中
+		  for(i=0; i < len; i++){
+			  item = items[i].split("=");
+			  name = decodeURIComponent(item[0]);
+			  value = decodeURIComponent(item[1]);
+			  if(name.length){
+				  args[name] = value;
+			  }
+		  }
+		  return args;
+	  }*/
+	  //位置操作 assign() replace() reload() 
+	  //Navigator对象
+	  //检测插件（在IE无效）
+	  function hasPlugin(name){
+		  name = name.toLowerCase();
+		  for(var i=0;i < navigator.plugins.length;i++){
+			  if(navigator.plugins[i].name.toLowerCase().indexOf(name) > -1){
+				  return true;
+			  }
+		  }
+		  return false;
+	  }
+	  //检测IE中的插件
+	  function hasIEPlugin(name){
+		  try
+		  {
+			new ActiveXOject(name);
+			return true;
+		  }
+		  catch (ex)
+		  {
+			  return false;
+		  }
+	  }
+	  //两种插件方法差别很大，因此典型的做法是针对每个插件分别创建检测函数，，而不是使用通用检测法
+	  //检测所有浏览器中的Flash
+	  function hasFlash(){
+		  var result = hasPlugin("Flash");
+		  if(!result){
+			  result = hasIEPlugin("ShockwaveFlash.ShockwaveFlash");
+			  
+		  }
+		  return result;
+	  }
+	  //注册处理程序
+	  //将一个站点注册为处理RSS源的处理程序
+	 /* navigator.registerContentHandler("application/rss+xml",
+	  "http://www.somereader.com?feed=%s","some Reader");
+	  //将一个应用程序注册为默认的邮件客户端
+	  navigator.registerProtocolHandler("mailto",
+	  "http://www.sommailclient.com?cmd=%s","some Mail Client");*/
+	  //Screen对象
+	  //history对象
+
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

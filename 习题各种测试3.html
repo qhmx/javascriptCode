@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>习题各种测试3</title>
+  <style>
+      .outer{
+	      border:1px solid #ff4;
+		  width:300px;
+		  height:300px;
+		  position:absolute;
+		  top:30px;
+
+	  }
+	  .inner{
+	      border:1px solid #f44;
+		  width:200px;
+		  height:200px;
+		  position:absolute;
+		  top:10px;
+		  
+
+	  }
+  </style>
+ </head>
+ <body>
+ <!-- <div class="outer">
+      <div class="inner"></div>
+  </div>-->
+  <!--元素消失 visibility:hidden;display:none;z-index:-1;opacity:0-->
+ 
+<!--<div style="border:1px solid #ff4;margin-bottom:5px;" >	<button id="one" style="visibility:hidden;" onclick="javascript:alert(1)">visibility:hidden，将元素隐藏起来，但不会改变页面布局，不会触发该元素已经绑定的事件</button></div>
+<div style="border:1px solid #f44;margin-bottom:5px;" >	<button id="two"  style="display:none;" onclick="javascript:alert(1)">display:none把元素隐藏起来改变页面布局</button></div>
+<div style="border:1px solid #4f4;margin-bottom:5px;width:200px;height:15px;background-color:red;">	<button id="three" style="width:200px;height:15px;position:absolute;z-index:-1;" onclick="javascript:alert(1)">z-index:-1</button></div>
+<div style="border:1px solid #444">	<button id="four" style="opacity:0;" onclick="javascript:alert(1)">opacity:0 把元素隐藏起来，但不会改变页面布局，并且，如果该元素已经绑定一些事件，触发有效</button></div>
+ </div>
+ <div style="background:red;width:100px;height:100px;"><button style="background:green;width:100px;height:100px;position:absolute;z-index:-1;">shjk</button></div>-->
+ <!--<div >
+     <div style="background:red;width:200px;height:200px;position:static;"></div>
+	 <div style="background:green;width:200px;height:200px;position:absolute;z-index:1;"></div>
+ </div>-->
+ <!--顺序规则-->
+ <div style="background:red;width:200px;height:200px">A</div>
+ <div style="background:green;width:200px;height:200px">B</div>
+ <button id="btn">点击触发事件</button>
+ <a id="link" href="http://www.baidu.com">取消默认行为</a>
+ <button id="myBtn">stopPropagation()方法取消进一步的事件捕获或冒泡</button>
+  <script>
+  /*在使用 attachEvent()方法的情况下，事件处理程序会在全局作用域中运行，因此 this 等于 window。*/
+     var btn = document.getElementById("btn");
+	/* btn.attachEvent('onclick', function(){
+		 alert(this === window);
+	 });
+	 btn.attachEvent('onclick',function(){
+		 alert("hello world!");
+	 });
+	 btn.attachEvent('onclick',function(){
+		 alert("hello !");
+	 });*/
+	 //如果事件处理程序存在于按钮的父节点中，那么currentTarget，target，this这些值是不同的
+	/* document.body.onclick = function(event){
+		 alert(event.currentTarget === document.body);//true
+		 alert(this === document.body);//true
+		 alert(event.target === document.getElementById("btn"));//true
+	 }*/
+	 //需要通过一个函数处理多个事件时，可以使用type属性
+	/* var handler = function(event){
+		 switch(event.type){
+			 case "click":
+			    alert("clicked");
+				break;
+			 case "mouseover":
+			    event.target.style.backgroundColor="#ff4";
+				break;
+			 case "mouseout":
+			    event.target.style.backgroundColor="";
+				break;
+		 }
+	 }
+	 btn.onclick = handler;
+	 btn.onmouseover = handler;
+	 btn.onmouseout = handler;*/
+
+	 //取消特定事件的默认行为，使用preventDefault()方法
+	 //只有 cancelable 属性设置为 true 的事件，才可以使用 preventDefault()来取消其默认行为。
+	 //链接的默认行为是被单击时会导航到其href指定的url,
+	/* var link = document.getElementById("link");
+	 link.onclick = function(event){
+		 //event.preventDefault(); DOM取消默认行为
+		 window.event.returnValue = false;//ie取消默认行为
+
+	 };
+
+	 //stopPropagation()方法用于立即停止事件在DOM层次中的传播，取消进一步的事件捕获或冒泡
+	 var myBtn = document.getElementById("myBtn");
+	 myBtn.onclick = function(event){
+		 alert("clicked");
+		// event.stopPropagation();//没有这句触发两个警告框
+		window.event.cancelBubble = true;//ie阻止事件冒泡的方法
+	 };
+	 document.body.onclick = function(event){
+		 alert("Body clicked");
+	 };*/
+	 //确定浏览器是否支持DOM2级规定的事件
+	 /*var isSupported = document.implementation.hasFeature("HTMLEvents","2.0");
+	 alert(isSupported);//true
+	 //确定浏览器是否支持DOM3级规定的HTML事件
+	 var isSupportedDom3 = document.implementation.hasFeature("UIEvent","3.0");
+	 alert(isSupportedDom3);//true*/
+	 alert(document.compatMode);//CSS1Compat  CSS1Compat 标准兼容模式开启 若为BackCompat:标准模式关闭
+  </script>
+ </body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Ajax练习3</title>
+ </head>
+ <body>
+  <script>
+   /*   function createXHR(){
+		  if(typeof XMLHttpRequest != "undefined"){
+			  return new XMLHttpRequest();
+		  }else if(typeof ActiveXObject != "undefined"){
+			  if(typeof arguments.callee.activeXString != "string"){
+				  var versions = ["MSXML2.XMLHttp.6.0","MSXML2.XMLHttp.3.0","MSXML2.XMLHttp"]
+				  i,len;
+				  for(i = 0, len = versions.length; i < len;i++){
+					  try{
+						  new ActiveXObject(version[i]);
+						  arguments.callee.activeXString = versions[i];
+						  break;
+					  }catch(ex){
+						  //跳过
+					  }
+				  }
+			  }
+			  return new ActiveXObject(arguments.callee.activeXString);
+		  }else{
+			  throw new Error("No XHR object available.");
+		  }
+	  }
+	  var xhr = createXHR();
+	  xhr.onreadystatechange = function(){
+		  if(xhr.readyState == 4){
+			  if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+		          alert(xhr.responseText);
+	          }else{
+		          alert("request was unsuccessful: " + xhr.status);
+	          }
+		  }
+	  }
+	  xhr.open("GET","ajax_info.txt",true);
+	  xhr.send(null);
+	  //xhr.abort() //取消异步请求*/
+
+	  //
+
+	/*  var xhr;
+	  if(window.XMLHttpRequest){
+		  //IE7+ FireFox Chrome Opera Safari浏览器执行代码
+		  xhr = new XMLHttpRequest();
+	  }else{
+		  //IE6 IE5浏览器执行代码
+		  xhr = new ActiveXObject("Microsoft.XMLHTTP");
+	  }*/
+	 /* try{
+		  xhr = new XMLHttpRequest();
+	  }catch(e){
+		  try{
+			  xhr = new ActiveXObject("Msxml2.XMLHTTP");
+		  }catch(e){
+			  xhr = new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+	  }
+	  
+	  xhr.open("GET","./ajax_info.txt",true);
+	  xhr.setRequestHeader("Access-Control-Allow-Origin","*");
+	  xhr.send();*/
+
+	/*  function createCORSRequest(method,url){
+		  var xhr = new XMLHttpRequset();
+		  if("withCredentials" in xhr){
+			  xhr.open(method,url,true);
+		  }else if(typeof XDomainRequest != "undefined")
+		  {
+			  xhr = new XDomainRequest();
+			  xhr,open(method,url);
+		  }else{
+			  xhr = null;
+		  }
+		  return xhr;
+	  }
+	  var request = createCORSRequest("get","http://www.somewhere-else.com.page/");
+	  if(request){
+		  request.onload = function(){
+			  //对request.responseText进行处理
+		  }
+		  request.end();
+	  }*/
+
+	  //图像ping 跨域好伤神
+	/*  var img = new Image();
+	  img.onload = function(){alert("成功啦")};
+	  img.onerror = function(){
+		  alert("Done!");
+	  };
+	  img.src = "http://www.baidu.com?name=Nicoks";*/
+
+//JSONP
+   /*   function myCallback(data){
+		  console.log(data);
+	  }
+	  function jsonp(url,data,callback){
+		  //data是否是字符串，是的话证明data值就是函数名
+		  if(typeof data == 'string'){
+			  callback = data;
+			  data = {};
+		  }
+		  url += url.indexOf('?') === -1 ?'?':'&';
+		  url += 'callback=' + callback;
+		  var params = "";
+		  for(var i in data){
+			  params += '&' + i + '=' + data[i];
+		  }
+		  url += params;
+		  var script = document.createElement('script');
+		  script.setAttribute('src',url);
+		  document.querySelector('head').appendChild(script);
+		  return url;
+	  }
+	  alert(jsonp('http://www.baidu.com/index.html',{id:34},'myCallback'));
+	  alert(jsonp('http://www.baidu.com/index.html?name=asd',{id:34},'myCallback'));*/
+	//Coment
+	/*  function createStreamingClient(url,progress,finished){
+		  var xhr = new XMLHttpRequest(),
+		      received = 0;
+			  xhr.open("get",url,true);
+			  xhr.onreadystatechange = function(){
+				  var result;
+				  if(xhr.readystate == 3){
+					  result = xhr.responseText.substring(received);
+					  received += result.lengh;
+					  progress(result);
+				  }else if(xhr.readyState == 4){
+					  finished(xhr.responseText);
+				  }
+			  };
+			  xhr.send(null);
+			  return xhr;
+	  }
+	  var client = createStreamingClient("streming.php",function(data){alert("Recived:"+data);
+	  },function(data){alert("done");});*/
+
+	  //Web Sockets
+	/*  var socket = new WebSocket("ws://www.example.com/server.php");
+	  socket.onopen = function(){
+		  alert("Connection established");
+	  };
+	  socket.onerror = function(){
+		  alert("Connection error");
+	  };
+	  socket.onclose = function(){
+		  alert("Connection closed");
+		  console.log("Was clean?" + event.wasClean + " Code=" + event.code + " Reason=" + event.reason);
+	  };*/
+	  
+	  
+  </script>
+ </body>
+</html>

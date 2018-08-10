@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Javascript的JSON字符串</title>
+  <style>
+	#info {
+	  background-color: lightgray;
+	  font-family: "Arial Black", Helvetica, sans-serif;
+	  font-size: 16em;
+	  color: black;
+	}
+  </style>
+ </head>
+ <body>
+    <h2>为 JSON 字符串创建对象</h2>
+	<pre>
+	JSON.parse()用于将一个JSON字符串转换为JavaScript对象
+	JSON.stringify()用于将Javascript值转换为JSON字符串
+	</pre>
+	<p id="demo"></p>
+	<div id="info">不撞南墙不回头</div>
+	<p>
+	  网站名称：<span id="jname"></span><br />
+	  网站地址：<span id="jurl"></span><br />
+	  网站 slogan:<span id="jslogan"></span><br />
+	</p>
+	<p id = "demo1"></p>
+	<p id = "demo2"></p>
+	<pre>
+		JSON不能存储Date对象，
+	    如果你需要存储date对象，需要将其转换为字符串
+		之后再将其字符串转换为Date对象
+	</pre>
+	<p id="demo4"></p>
+	<a href="javascript:void(0);">点我没有反应的！</a>
+	<a href="javascript:void(alert('Warning!!!'))">点我弹出对话框</a>
+	<a href="#pos">点我定位到指定位置！</a>
+	不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心
+	不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心
+	不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心
+	不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心
+	不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心不见黄河不死心
+	<p id="pos">尾部定位点</p>
+	<script>
+	  var text='{"sites":['+
+	  '{"name":"Runoob","url":"www.runoob.com"},'+
+	  '{"name":"Google","url":"www.google.com"},'+
+	  '{"name":"taobao","url":"www.taobao.com"}]}';
+	  var demo=document.getElementById("demo");
+	  var obj = JSON.parse(text);
+	  demo.innerHTML=obj.sites[1].name+" "+obj.sites[1].url;
+	  var JSONObject={
+		  "name":"菜鸟教程",
+		  "url":"www.runoob.com",
+		  "slogan":"学的不仅是技术，更是梦想！"
+	  };
+	  document.getElementById("jname").innerHTML=JSONObject.name;
+	  document.getElementById("jurl").innerHTML=JSONObject.url;
+	  document.getElementById("jslogan").innerHTML=JSONObject.slogan;
+	  var myObj = {
+	      "name":"runoob",
+		  "alexa":"10000",
+		  "sites": {
+			  "site1":"www.runoob.com",
+			  "site2":"m.runoob.com",
+			  "site3":"c.runoob.com"
+		  }
+	  };
+	  for (x in myObj) {
+		  document.getElementById("demo1").innerHTML += myObj[x] + "<br>";
+	  }
+	  for(x in myObj.sites) {
+		  document.getElementById("demo2").innerHTML += myObj.sites[x] + "<br>";
+	  }
+	  //从服务器端接收JSON数据
+	  //使用AJAX从服务器端请求JSON数据，并解析为JavaScript对象
+	 /* var xmlhttp = new XMLHttpRequest();
+	  xmlhttp.onreadystatechange = function() {
+		  if (this.readyState == 4 && this.status == 200){
+			  myJsonObj = JSON.parse(this.responseText);
+              document.getElementById("demo3").innerHTML = myJsonObj.name;
+		  }
+	  };
+	  xmlhttp.open("GET", "/try/ajax/json_demo.txt",true);
+	  xml.send();*/
+	  //从服务器端接收数组的JSON数据 如果从服务端接收的是数组的JSON数据，
+	  //则JSON.parse会将其转换为Javascript数组：
+	/*  var xmlhttp = new XMLHttpRequest();
+	  xmlhttp.onreadystatechange = function() {
+		  if(this.readyState == 4 && this.status == 200) {
+			  myArr = JSON.parse(this.responseText);
+			  document.getElementById("demo3").innerHTML = myArr[1];
+		  }
+	  }
+	  xmlhttp.open("GET","/try/ajax/json_demo.txt","true");
+	  xmlhttp.send();*/
+	  /*
+	  JSON不能存储Date对象，
+	  如果你需要存储date对象，需要将其转换为字符串
+	  */
+	 //方法一：
+	 /*var text = '{"name":"Lob","initDate":"2018-07-12","age":23}';
+	  var obj = JSON.parse(text);
+	  obj.initDate = new Date(obj.initDate);
+	  document.getElementById("demo4").innerHTML = obj.name + "创建日期" +obj.initDate;*/
+	  //方法二：
+	  /*var text = '{"name":"mary","birthday":"1995-02-05","age":23}';
+	  var obj = JSON.parse(text,function(key,value){
+		  if(key == "birthday") {
+			  return new Date(value);
+		  }else{
+			  return value;
+	  }});
+	  document.getElementById("demo4").innerHTML = obj.name + "出生于" + obj.birthday;*/
+	  //JSON不允许包含函数，但你可以将函数作为字符串存储，之后再将字符串转换为函数,不建议在json中使用函数
+	  var text = '{"name":"Runoob","alexa":"function () {return 1000;}","site":"www.runoob.com"}';
+	  var obj = JSON.parse(text);
+	  obj.alexa = eval("(" + obj.alexa + ")");
+	  document.getElementById("demo4").innerHTML = obj.name + " alexa排名 " + obj.alexa();
+	</script>
+	
+ </body>
+</html>

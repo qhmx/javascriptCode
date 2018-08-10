@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>第十五章canvas绘图</title>
+  <style>
+    /*#cake1{width:50px;height:50px;}*/
+  </style>
+ </head>
+ <body>
+  <canvas id="drawing" width="200" height="200">A drawing of something.</canvas>
+  <img id="cake1" src="..\..\..\imgs\cake1.jpg" >
+
+  <script>
+      var drawing = document.getElementById("drawing");
+	  //确定浏览器支持canvas元素
+	  if(drawing.getContext){
+		  var context = drawing.getContext("2d");
+		//  var imgURL = drawing.toDataURL("..\..\..\imgs\cake1.jpg");
+		//  var image = document.createElement("img");
+		//  image.src = imgURL;
+		//  document.body.appendChild(image);
+		//绘制矩形 矩形是唯一一种可以直接在2D上下文中绘制的形状
+		//与矩形有关的方法包括fillRect() strokeRect()  clearRect()
+		//绘制红色矩形
+		/*context.fillStyle = "#ff0000";
+		context.fillRect(10,10,50,50);
+		//绘制半透明的蓝色矩形
+		context.fillStyle = "rgba(0,0,255,0.5)";
+		context.fillRect(30,30,50,50);
+		context.clearRect(40,40,10,10);
+		//绘制红色描边矩形
+		context.strokeStyle = "#ff0000";
+		context.strokeRect(50,50,50,50);
+		//绘制半透明的蓝色描边矩形
+		context.strokeStyle = "rgba(0,0,255,0.5)";
+		context.strokeRect(80,80,50,50);
+		//线条宽度 lineWidth 线头末端 lineCap butt|round|square 线条相交的方式 round|bevel |miter
+		//clearRect() 方法用来清除指定矩形区域*/
+		//绘制路径 要绘制路径，首先必须调用beginPath()方法，表示要开始绘制路径
+		//arc(x,y,radius,startAngle,endAngle,counterclockwise) 以x，y为圆心绘制一条弧线，弧线半径为radius,起始和结束角度为startAngle,endAngle,最后一个参数表示是否按逆时针计算，值为false表示按顺时针计算
+		//isPointInPath()方法 接收x和y坐标，用于在路径被关闭之前确定画布上的某一点是否位于路径上
+		/*
+		if(context.isPointInPath(100,100)){
+			alert("Point(100,100)is in the path.");
+		}else{
+			alert("Point(100,100)is not in the path.");
+		}*/
+		//arcTo(x1,y1,x2,y2,radius)
+		//bezierCurveTo(c1x,c1y,c2x,c2y,x,y)
+		//lineTo(x,y)
+		//moveTo(x,y)
+		//quadraticCurveTo(cx,cy,x,y)
+		//rect(x,y,width,height)
+	/*	context.beginPath();
+		//绘制一个不带数字的时钟表盘
+		//绘制外圆
+		context.arc(100,100,99,0,2*Math.PI,false);
+		//绘制内圆
+		context.moveTo(194,100);
+		context.arc(100,100,94,0,2*Math.PI,false);
+
+		//变换原点
+		context.translate(100,100);
+        //旋转表针
+		context.rotate(1);
+		//绘制分针
+		//context.moveTo(100,100);context.lineTo(100,15);完成变换原点操作后修改成下句
+		context.moveTo(0,0);
+		context.lineTo(0,-85);
+		
+		//绘制时针
+	    //context.moveTo(100,100);context.lineTo(35,100);完成变换原点操作后修改成下句
+		context.moveTo(0,0);
+		context.lineTo(-65,0);
+		
+		//绘制文本的方法 fillText() strokeText()fillText()使用fillStyle属性绘制文本 strokeText()使用strokeStyle()属性为文本描边
+
+		//context.font = "bold 14px Arial";
+		//context.textAlign = "center";
+		//context.textBaseline = "middle";
+		//context.fillText("12",100,20);
+		//变换 rotate(angle) scale(scalex,scaley) translate(x,y) transform(m1_1,m1_2,m2_1,m2_2,dx,dy) setTransform(m1_1,m1_2,m2-1,m2_2,dx,dy)
+
+		//描边路径
+		context.stroke();*/
+		//绘制图像
+		//var image = document.getElementById("cake1");
+		//context.drawImage(image,10,30);
+		//context.drawImage(image,10,30,50,50);
+		//context.drawImage(image,0,10,50,50,0,100,40,50);
+		//设置阴影
+		/*context.shadowOffsetX = 5;
+		context.shadowOffsetY = 5;
+		context.shadowBlur = 4;
+		context.shadowColor = "rgba(0,0,0,0.5)";
+		context.fillStyle = "#ff0000";
+		context.fillRect(10,10,50,50);
+		context.fillStyle = "rgba(0,0,255,1)";
+		context.fillRect(30,30,50,50);*/
+		//渐变
+		/*var gradient = context.createLinearGradient(30,30,70,70);
+		gradient.addColorStop(0,"white");
+		gradient.addColorStop(1,"black");
+		//渐变矩形 为了让渐变覆盖整个矩形，而不仅应用到矩形的一部分，矩形和渐变对象的坐标必须匹配才行
+		context.fillStyle = gradient;
+		context.fillRect(30,30,50,50);
+		//径向渐变
+		var gradient = context.createRadialGradient(55,55,10,55,55,30);
+		gradient.addColorStop(0,"white");
+		gradient.addColorStop(1,"black");
+		context.fillStyle = gradient;
+		context.fillRect(30,30,50,50);*/
+		//模式 错错错
+		/*var image = document.getElementById("cake1");
+		var pattern = context.createPattern(image,"repeat-x");
+		context.fillStyle = pattern;
+		context.fillRect(10,10,150,150);错错错*/
+		//创建一个简单的灰阶过滤器
+		/*var image = document.getElementById("cake1"),
+		    imageData, data,
+			i, len, average,
+			red, blue, green ,alpha;
+		//绘制原始图形
+		context.drawImage(image, 0, 0);
+		//取得图像数据
+		imageData = context.getImageData(0, 0, image.width, image.height);
+		data = imageData.data;
+
+		for(i=0, len=data.length;i<len; i+=4){
+			red = data[i];
+			green = data[i+1];
+			blue = data[i+2];
+			alpha = data[i+3];
+
+			//求得rgb平均值
+			average = Math.floor((red + green + blue) / 3);
+
+			//设置颜色值 
+			data[i] = average;
+			data[i+1] = average;
+			data[i+2] = average;
+		}
+		//回写图像数据并显示结果
+		imageData.data = data;
+		context.putImageData(imageData,0,0);*/
+		//合成
+		//绘制红色矩形
+		context.fillStyle = "#ff0000";
+		context.fillRect(10,10,50,50);
+		//设置合成操作
+		context.globalCompositeOperation = "destination-over";
+		//绘制蓝色矩形
+		context.fillStyle = "rgba(0,0,255,1)";
+		context.fillRect(30,30,50,50);
+
+
+	  }
+	  
+  </script>
+ </body>
+</html>

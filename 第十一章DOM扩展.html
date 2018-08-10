@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>第十一章DOM扩展</title>
+  <!--DOM的主要扩展是Selectors API 和HTML5-->
+  <!--Selectors API Level 1的核心是两个方法 querySelector() querySelectorAll()-->
+  
+ </head>
+ <body>
+  <button id="myButton"></button>
+  <ul id="myList">
+      <li></li>
+	  <li id="list"></li>
+	  <li></li>
+	  <li></li>
+  </ul>
+
+  <script>
+      /*通过Document类型调用querySelector()方法时，会在文档元素的范围内查找匹配的元素，通过Element类型调用querySelector()方法时，只会在该元素后代元素的范围内查找匹配的元素。
+	  */
+	  //取得body元素
+	/*  var body = document.querySelector("body");
+	  //取得ID为“myDiv”的元素
+	  var myDiv = document.querySelector("#myDiv");
+	  //取得类为“selected”的第一个元素
+	  var selected = document.querySelector(".selected");
+	  //取得类为“button”的第一个图像元素
+	  var img = document.body.querySelector("img.button");
+	  //querySelectorAll()方法，返回所有匹配的元素而不仅仅是一个元素
+	  //能够调用querySelectorAll()方法的类型包括Document，DocumentFragment Element
+	  //取得某div中的所有em元素，
+	  var ems = document.getElementById("myDiv").querySelectorAll("em");
+	  //取得类为selected的所有元素
+	  var selected = document.querySelectorAll(".selected");
+	  //取得所有p元素中的所有strong元素
+	  var strongs = document.querySelectorAll("p strong");
+	  //要去的返回NodeList中的每一个元素，可以使用item方法，也可以使用方括号语法
+	  strong = strongs[i];
+	  strong = strongs.item(i);*/
+	  //matchesSelector()方法
+	  //元素遍历 
+	  //childElementCount 返回子元素（不包括文本节点和注释）的个数
+	  //firstElementChild 指向第一个子元素：firstChild的元素版
+	  //lastElementChild指向最后一个元素：lastChild的元素版
+	  //previousElementSibling:指向前一个同辈元素 previousSibling的元素版
+	  //nextElementSibling:指向后一个同辈元素 nextSibling的元素版
+	  //HTML5
+	  //取得所有类中包含“username” 和“current” 的元素，类名的先后顺序无所谓
+	 /* var allCurrentUsernames = document.getElementsByClassName("username current");
+	  //取得ID为“myDiv”的元素中带有类名“selected”的所有元素
+	  var selected = document.getElementById("myDiv").getElementsByClassName("selected");
+	  //删除user类
+	  var classNames = div.className.split(/\s+/);
+	  var pos = -1,i,len;
+	  for(i=0,len=className.length;i<len;i++){
+		  if(classNames[i] == "user"){
+			  pos = i;
+			  break;
+		  }
+	  }
+	  classNames.splice(i,1);
+	  div.className = classNames.join(" ");
+	  //HTML5新增操作类名的方式add() contains() remove() toggle()
+	  //以上代码就可以用下面一行代替
+	  div.classList.remove("user");*/
+	  //焦点管理document.activeElement属性和document.hasFocus()方法
+	  //document.hasFocus()方法用于确定文档是否获得了焦点
+	  //无障碍Web应用的一个主要标志就是恰当的焦点管理
+	/*  var button = document.getElementById("myButton");
+	  button.focus();
+	  alert(document.hasFocus());
+	  //readyState 属性 loading:正在加载文档  complete已经加载完文档
+	  //兼容模式 document.compatMode 为CSS1Compat (标准模式) 为BackCompat 混杂模式
+	  if(document.compatMode == "CSS1Compat"){
+		  alert("Standards mode");
+	  }else {
+		  alert("Quirks mode");
+	  }
+	  //head属性 
+	  var head = document.head || document.getElementsByTagName("head")[0];
+	  //字符集属性 document.charset document.defaultCharset
+	  alert(document.charset);
+	  if(document.chaarset != document.defaultCharset){
+		  alert("Custom character set being used");
+	  }
+	  //自定义数据属性
+	  //插入标记 style和script是没有作用域的元素 如果通过innerHTML插入的字符串开头就是一个无作用域的元素，那么IE就会在解析这个字符串之前先删除该元素 script 必须指定defer属性，二是script元素必须位于有作用域元素之后
+	  div.innerHTML = "_<script defer> alert('hi');<\/script>";
+	  div.innerHTML = "<div>&nbsp;</div><script defer>alert('hi');<\/script>";
+	  div.innerHTML = "<input type=\"hidden\"><script defer>alert('hi')<\/script>";
+	  div.innerHTML = "_<style type=\"text/css\">body{background-color:red;}</style>";
+	  div.removeChild(div.firstChild);*/
+	  //专有扩展
+	  //文档模式
+	/*  var mode = document.documentMode;
+	  alert(mode);
+	  //children属性
+	  var myList = document.getElementById("myList");
+	  var childCount = myList.children.length;
+	  var firstChild = myList.children[0];
+	  alert(childCount);
+	  alert(firstChild);*/
+	  //通用contains函数(确定节点是不是另一个节点的后代)
+	/*  function contains(refNode,otherNode){
+		  if(typeof refNode.contains == "function" && (!client.engine.webkit || client.engine.webkit >= 522)){
+			  return refNode.contains(otherNode);
+		  }else if (typeof refNode.compareDocumentPosition == "function"){
+			  return !!(refNode.compareDocumentPosition(otherNode) & 16);
+		  }else {
+			  var node = otherNode.parentNode;
+			  do {
+				  if(node === refNode){
+					  return true;
+				  }else{
+					  node = node.parentNode;
+				  }
+			  }while(node !== null);
+			  return false;
+		  }
+	  }
+	  var myList = document.getElementById("myList");
+	  var list = document.getElementById("list");
+	  alert(contains(myList,list));*/
+	  //插入文本
+
+
+  </script>
+ </body>
+</html>

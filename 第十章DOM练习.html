@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>第十章DOM练习</title>
+  
+ </head>
+ <body>
+ <div id="myDiv"><!--A commant--></div>
+  <ul id="myList">
+      <li>item1</li>
+	  <li>item2</li>
+	  <li>item3</li>
+	  <li>item4</li>
+  </ul>
+  <img src="..\..\..\imgs\cake1.jpg" />
+  <img src="..\..\..\imgs\cake2.jpg"  id="cake2" />
+  <img  src="..\..\..\imgs\cake3.jpg" name="mycake3" />
+  <a></a>
+  <a name="skjdsa"></a>
+  <a name="sohkl"></a>
+  <a href="#"></a>
+  <a href="http://baidu.com"></a>
+  <a href="http://jd.com"></a>
+  <div id="myDiv" class="bd" title="Body" lang="en" dir="ltr"></div>
+  <script>
+      //节点类型
+	 /* var someNode = document.getElementById("container");
+	  if(someNode.nodeType == 1){//适用于所有浏览器
+		  alert("Node is an element");
+	  }
+	  var firstChild = someNode.childNodes[0];
+	  var secondChild = someNode.childNodes.item(1);
+	  var count = someNode.childNodes.length;*/
+	  //转换数组
+	/*  function convertToArray(nodes){
+		  var array = null;
+		  try {
+			  array = array.prototype.slice.call(nodes,0);
+		  }catch(ex){
+			  array = new Array();
+			  for(var i=0.len=nodes.length;i < len;i++){
+				  array.push(nodes[i]);
+			  }
+		  }
+		  //parentNode firstChild lastChild previousSibing nextSibling
+		  if(someNode.nextSibling === null){
+			  alert("Last node in hte parent's childNodes list");
+		  }else if (someNode.previousSibling === null)
+		  {
+			  alert("First node in the parent's childNodes list");
+		  }
+		  //hasChildNodes()方法在节点包含一个或多个子节点的情况下返回true
+		  //ownerDocument 该属性指向表示整个文档的文档节点，任何节点都不能同时存在于两个或更多文档中
+		  //操作节点 appendChild() insertBefore() replaceChild() removeChild()
+		  var returnedNode = someNode.appedChild(newNode);
+		  alert(returnedNode == newNode);//true
+		  alert(someNode.lastChild == newNode);//true
+		  returnedNode = someNode.insertBefore(newNode,null);
+		  alert(newNode == someNode.lastChild);//true
+		  returnedNode = someNode.insertBefore(newNode,someNode.firstChild);
+		  alert(returnedNode == newNode);//true
+		  alert(newNode == someNode.firstChild);//true
+		  returnedNode = someNode.insertBefore(newNode,someNode.lastChild);
+		  alert(newNode == someNode.childNodes[someNode.childNodes.length-2]);//true
+		  returnedNode = someNode.replaceChild(newChild,someNode.firstChild);
+		  returnedNode =someNode.replaceChild(newNode,someNode.lastChild);
+		  var formerFirstChild = someNode.removeChild(someNode.firstChild);*/
+		/* var myList = document.getElementById("myList");
+		  alert(myList);
+		  var deepList = myList.cloneNode(true);
+		  alert(deepList.childNodes.length);
+		  var shallowList = myList.cloneNode(false);
+		  alert(shallowList.childNodes.length);*/
+		  //documentElement firstChild childNodes[0] 的值相同，都指向<html>元素 
+		 /* var html = document.documentElement;//取得对<html>的引用
+		  alert(html === document.childNodes[0]);//true
+		  alert(html === document.firstChild);//true
+		  var body = document.body;//取得对<body>的引用
+		  var doctype = document.doctype;//取得对<!DOCTYPE>的引用*/
+		  //文档信息
+		  //注意URL和domain属性是相互关联的
+		  //浏览器对domain属性有一个限制，即如果域名一开始是松散的，那么就不能将它设置为紧绷的
+		 /* var url = document.URL;//取得完整的URL
+		  var domain = document.domain//取得域名
+		  var referrer = document.referrer//取得来源页面的URL*/
+		  //查找元素
+		 /* var images = document.getElementsByTagName("img");
+		  alert(images.length);
+		  alert(images[0].src);
+		  alert(images.item(1).src);
+		  var allElements = document.getElementsByTagName("*");//取得文档中所有元素
+		  //使用nameItem()方法通过元素的name属性取得集合中的项
+		  var mycake3 = images.namedItem("mycake3");
+		  alert(mycake3.src);*/
+		  //特殊集合 document.anchors document.forms document.forms document.images document.links
+		 /* var links = document.links;
+		  for(var i=0;i<links.length;i++)
+		  {
+			  alert(links[i].href);
+		  }
+		  var anchors = document.anchors;
+		  for(var i=0;i<anchors.length;i++)
+		  {
+			  alert(anchors[i].name);
+		  }
+		  var images = document.images;
+		  for(var i=0;i<images.length;i++)
+		  {
+			  alert(images[i].href);
+		  }*/
+		  //DOM一致性检测
+		 /* var hasXmlDom = document.implementation.hasFeature("XML","1.0");
+		  alert(hasXmlDom);
+		  var hasLSDom = document.implementation.hasFeature("LS", "3.0");
+          alert(hasLSDom);*/
+		  //Element元素 nodeType的值为1，nodeName的值为元素的标签名，nodeValue的值为null，parentNode可能是Document或Element，其子节点可能是Element、Text、Comment、ProcessingInstruction、CDATASection、EnityReference
+		  //注意在HTML中，标签名始终都是全部大写，而在XML中，标签吗始终会与源代码中的保持一致，最好在比较之前转换为相同的大小写形式
+		  /*if(element.tagName.toLowerCase() == "div"){//适用于任何文档
+		  }*/
+		  //HTML元素的属性
+		 /* var div = document.getElementById("myDiv");
+		  alert(div.id);
+		  alert(div.className);
+		  alert(div.title);
+		  alert(div.lang);
+		  alert(div.dir);
+		  alert(div.getAttribute("class"));//"bd"
+		  */
+		/*  var id = element.attributes.getNamedItem("id").nodeValue;
+		  var id = element.attributes["id"].nodeValue;
+		  element.attributes["id"].nodeValue = "someOtherId";
+		  //removeNamedItem()返回表示被删除特性的Attr节点
+		  var oldAttr = element.attributes.removeNamedItem("id");*/
+		  //Text类型 Text节点nodeType的值为3，nodeName的值为"#text" nodeValue的值我节点所包含的文本 parentNode是一个Element，不支持子节点
+		  //substring  和 substr 
+		  //substring方法用来提取字符串中介于两个指定下标之间的字符substring(start,stop) 从start到stop-1的所有字符，长度为stop-start 如果start和end相等，返回空串，如果start比end大，交换参数，如果start或end为负数，替换为0
+		  //substr方法用来返回一个从指定位置开始的指定长度字符串
+		  //如果start为负数，则start=start+str.length 如果length为0.返回空串，
+		 /* var mystring = "Hello world!";
+		  alert(mystring.substring(2,5));//llo
+		  alert(mystring.substring(-7,2));//he
+		  alert(mystring.substring(7,2));//llo w
+		  alert(mystring.substr(-6,2));//wo
+		  alert(mystring.substr(7,2));//or
+		  alert(mystring.substring(2));//llo world!
+		  alert(mystring.substr(2));//llo world!*/
+		  //Comment类型，nodeType 的值为8，nodeName的值为"#comment" nodeValue的值是注释的内容，parentNode可能是Document或Element，不支持子节点
+		  //浏览器不会识别位于</html>后面的注释，如果要访问注释节点，一定要保证它们是<html>元素的后代
+		/* var div = document.getElementById("myDiv");
+		 var comment = div.firstChild;
+		 alert(comment.data);*/
+		 //加载Javascript文件的函数
+		/* function loadScript(url){
+			 var script = document.createElement("script");
+			 script.type = "text/javascript";
+			 script.url = url;
+			 document.body.appendChild(script);
+		 }
+		 //加载script脚本字符串
+		 function loadScriptString(code){
+			 var script = document.createElement("script");
+			 script.type = "text/javascript";
+			 try{
+				 script.appendChild(document.createTextNode(code));
+			 }catch(ex){
+				 script.text = code;
+			 }
+			 document.body.appendChild(script);
+		 }
+		 //加载动态style
+		 function loadStyles(url){
+			 var link = document.createElement("link");
+			 link.rel = "stylesheet";
+			 link.type = "type/css";
+			 link.href = url;
+			 var head document.getElementsByTagName("head")[0];
+			 head.appendChild(link);
+		 }
+		 //加载style字符串
+		 function loadStyleString(css){
+			 var style = document.createElement("style");
+			 style.type = "text/css";
+			 try{
+				 style.appendChild(document.createTextNode(css));
+			 }catch(ex){
+				 style.stylesheet.cssText = css;
+			 }
+			 var head = document.getElementsByTagName("head")[0];
+			 head.appendChild(style);
+		 }*/
+		 //创建table
+	/*	 var table = document.createElement("table");
+		 table.border = 1;
+		 table.width = "100%";
+		 //创建tbody
+		 var tbody = document.createElement("tbody");
+		 table.appendChild(tbody);
+		 //创建第一行
+		 tbody.insertRow(0);
+		 tbody.rows[0].insertCell(0);
+		 tbody.rows[0].cells[0].appendChild(document.createTextNode("Cell 1,1"));
+		 tbody.rows[0].insertCell(1);
+		 tbody.rows[0].cells[1].appendChild(document.createTextNode("Cell 2,1"));
+		 //创建第二行
+		 tbody.insertRow(1);
+		 tbody.rows[1].insertCell(0);
+		 tbody.rows[1].cells[0].appendChild(document.createTextNode("Cell 1,2"));
+		 tbody.rows[1].insertCell(1);
+		 tbody.rows[1].cells[1].appendChild(document.createTextNode("Cell 2,2"));*/
+   </script>
+ </body>
+</html>

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  
+  <script>
+//1.//给Array本地对象添加一个原型方法，
+//用于删除数组条目中重复的条目，
+//返回值是一个包含被删除的重复条目的新数组
+  /* Array.prototype.distinct=function(){
+	  var ret = [];
+	  for(var i = 0; i < this.length;i++){
+		  for(var j = i+1;j < this.length;){
+			  if(this[i] === this[j]){
+				  ret.push(this.splice(j,1)[0]);
+			  }
+			  else
+			  {
+				  j++;
+			  }
+		  }
+	  }
+	  return ret;	 //返回被删除数组
+	 //return this;//返回删除重复元素后的数组
+  }
+  alert(['a','b','d','e','a','e','e'].distinct());*/
+ /* var arr = ['a','g',true];
+  alert(arr.push(['df','er',3,'undefined']));
+  alert(arr);
+  var arr = ['a','g',true];
+  var arr1 = ['df','er',3,'undefined'];
+  alert(arr.push(arr1.splice(1,2)));
+  alert(arr);*/
+  //填充代码，使mySort()能使传入的参数按照从小到大的顺序显示出来
+ /* function mySort(){
+	  var tags = new Array();
+	  for(var i = 0; i < arguments.length;i++){
+		  tags.push(arguments[i]);
+	  }
+	  tags.sort(function sortNumber(a,b){return a-b;});//从小到大排列
+	  return tags;
+  }
+  var result = mySort(50,11,16,32,24,99,57,100);
+  alert("从小到大排序后为 " + result);*/
+  //编写一个求和函数，满足如下要求
+  /*
+	// Should equal 15
+	sum(1, 2, 3, 4, 5);
+	// Should equal 0
+	sum(5, null, -5);
+	// Should equal 10
+	sum('1.0', false, 1, true, 1, 'A', 1, 'B', 1, 'C', 1, 'D', 1,
+	  'E', 1, 'F', 1, 'G', 1);
+	// Should equal 0.3, not 0.30000000000000004
+	sum(0.1, 0.2);*/
+	//alert(Number('1.6'));
+	//alert(Math.max(1,4));
+	
+/*	function sum(arr){
+		var sum = 0;
+		var patt = /^-?\d+(\.\d+)?$/;
+		//var pattdot = /\.\d+/;
+		for(var i = 0;i < arr.length;i++){
+			if(patt.test(arr[i])){
+				//var lenNew = arr[i].length-arr[i].toString().search(pattdot)-1;
+				//len = Math.max(len,lenNew);
+				sum += Number(arr[i]);
+			}
+			//  if(typeof arr[i] == 'number') sum += arr[i];
+			//  else if(typeof arr[i] == 'string' && Number(arr[i]) == 'number') sum += Number(arr[i]);
+		}
+		
+		return sum.toFixed(3) * 1000 / 1000;
+	}
+	function add(){
+		var res = 0;
+		for(var i = 0,l = arguments.length;i < l;i++){
+			res += (!isNaN(arguments[i]) && window.parseFloat(arguments[i]))||0;
+		}
+        //这个是在做：保留三位小数，并且去掉末尾的0，最后一位会进行四舍五入
+		return res.toFixed(3) * 1000 / 1000;
+	}
+	function sum2(){
+		var sum = 0;
+		var patt = /^-?\d+(\.\d+)?$/;
+		for(var i = 0;i < arguments.length;i++)
+		{
+			if(patt.test(arguments[i])){
+				//var lenNew = arr[i].length-arr[i].toString().search(pattdot)-1;
+				//len = Math.max(len,lenNew);
+				sum += Number(arguments[i]);
+			}
+		}
+		return sum.toFixed(3) * 1000 /1000;
+	}
+	//var arr = [1,2,3,4,5];
+	//var arr = [5,null,-5];
+	//var arr = ['1.0',false,1,true,1,'A',1,'B',1,'C',1,'D',1,'E',1,'F',1,'G',1,'c1.0x'];
+	//var arr = [0.15,0.2];
+	var arr = [0.2465,0.3512];//0.598
+	//alert(sum(arr));
+	//alert(add('1.0',1));
+	//alert(add(0.2,0.00001));
+	alert(sum2(0.2465,0.3512));*/
+
+//实现一个fibonacci函数
+/**
+ *@desc: fibonacci
+ *@param: count {Number}
+ *@return: result {Number} 第count个fibonacci值，计数从0开始
+  fibonacci数列为：[1, 1, 2, 3, 5, 8, 13, 21, 34 …]
+  则getNthFibonacci(0)返回值为1
+  则getNthFibonacci(4)返回值为5
+ */
+ /*  function getNthFibonacci(count){
+	   if(count == 0 || count == 1) return 1;
+	   else{
+		   var first = 1,second = 1,i = 0;
+		   for(i = 2;i <= count;i++){
+			   third = first + second;
+			   first = second;
+			   second = third;
+		   }
+		   return third;
+	   }
+   }
+   alert(getNthFibonacci(2));*/
+    //alert("134"-"234");//-100
+  //写个Javascript函数判断是否大于18岁，比如传入1993-6-3，返回true，传递2001-6-3返回flase
+  /*  function compareAge(str){
+	//	var year1 = parseInt(str.slice(0,4));
+	    var year1 = str.slice(0,4);
+		var date = new Date();
+	//	var year2 = parseInt(date.getFullYear());
+	    var year2 = date.getFullYear();
+		var age = year2 - year1;
+		if(age > 18) alert( "成年啦");
+		else alert("还是个宝宝");
+	}
+	compareAge("1999-6-3");*/
+	//给String对象定义一个repeat方法，满足如下要求
+/*	String.prototype.repeat = function(num){
+		var str = '';
+		//var temp = this.slice();
+		while(num--){
+			//str += temp;
+			str += this;
+		}
+		return str;
+	};
+	alert('hello'.repeat(3));
+	String.prototype.repeat = function(num){
+		return new Array(num+1).join(this);
+	}
+	alert('再留'.repeat(3));*/
+	/*function getNumber(n,m){
+		var arr=[];
+		for(var i = 1;i <= n;i++){
+			arr.push(i);
+		}
+		arr.sort();
+		return arr[m-1];
+	}
+	alert(getNumber(11,4));*/
+
+	//判断参数是否是数组类型，如果是返回true
+/*	function isArray(arr){
+		if(Object.prototype.toString.call(arr) === '[object Array]') return true;
+		else return false; //出错了，不知道哪不对
+
+		//return Array.isArray(arr);
+		//return arr instanceof Array;
+		
+	}
+	alert(isArray([1,25,'sdf',false]));//true
+    alert(isArray({'name':'sd','age':23}));//false*/
+
+//手写一个快排
+    function quickSort(arr){
+		if(arr.length <= 1){
+			return arr;
+		}
+		var num = Math.floor(arr.length / 2);
+		var numVal = arr.splice(num,1);
+
+		var left = [];
+		var right = [];
+		for(var i = 0;i < arr.length;i++){
+			if(arr[i] < numVal){
+				left.push(arr[i]);
+			}else if(arr[i] > numVal){
+				right.push(arr[i]);
+			}
+		}
+		return quickSort(left).concat(numVal,quickSort(right));
+	}
+	alert(quickSort([10,6,5,23,12,45,1,2]));
+  </script>
+ </body>
+</html>

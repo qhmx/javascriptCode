@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Javascript继承练习</title>
+  <!--许多OO语言都支持两种继承方式，接口继承和实现继承，借口继承只继承方法签名，而实现继承则继承实际的方法，由于函数没有签名，在ECMAScript中无法实现接口继承。ECMASript只支持实现继承，而且其实现继承主要是依靠原型链来实现的。
+  -->
+  <script>
+  //实现原型链基本模式
+/*  function SuperType() {
+	  this.property = true;
+  }
+  SuperType.prototype.getSuperValue = function(){
+	  return this.property;
+  };
+
+  function SubType() {
+	  this.subproperty = false;
+  }
+
+  //继承了SuperType
+  SubType.prototype = new SuperType();
+  SubType.prototype.getSubValue = function() {
+	  return this.subproperty;
+  };
+  var instance = new SubType();
+  alert(instance.getSuperValue());//true
+  alert(Object.prototype.isPrototypeOf(instance));//true
+  alert(SuperType.prototype.isPrototypeOf(instance));//true
+  alert(SubType.prototype.isPrototypeOf(instance));//true
+  //给原型添加方法的代码一定要放在替换原型的语句之后，
+  //在通过原型链实现继承时，不能使用对象字面量创建原型方法，因为这样会重写原型链
+  //原型链的第一个问题：包含引用类型值的原型属性会被所有实例共享
+  function SuperType(){
+	  this.colors = ["red", "blue", "purple"];
+  }
+  function SubType(){
+  }
+  SubType.prototype = new SuperType();
+
+  var instance1 = new SubType();
+  instance1.colors.push("green");
+  alert(instance1.colors);//"red,blue,purple,green"
+
+  var instance2 = new SubType();
+  alert(instance2.colors);//"red,blue,purple,green"
+  //原型链的第二个问题：在创建子类型的实例时，不能向超类型的构造函数中传递参数，实际上，应该说，没有办法在不影响所有对象实例的情况下，给超类型的构造函数传递参数
+  */
+  //借用构造函数
+  /*function SuperType(name){
+	  this.colors = ["red","blue", "green"];
+	  this.name = name;
+  }
+  function SubType(){
+	  //继承了SuperType，同时还传递了参数
+	  SuperType.call(this, "Nicksd");
+	  //实例属性
+	  this.age = 23;
+  }
+  var instance1 = new SubType();
+  instance1.colors.push("black");
+  alert(instance1.colors);
+
+  var instance2 = new SubType();
+  alert(instance2.colors);
+  var instance = new SubType();//"red,blue,green"
+  alert(instance.name);//Nicksd
+  alert(instance.age);//23*/
+  //组合继承（伪经典继承）-常用继承模式
+  function SuperType(name){
+	  this.name = name;
+	  this.colors = ["red", "bllue", "green"];
+  }
+  SuperType.prototype.sayName = function(){
+	  alert(this.name);
+  };
+  function SubType(name,age){
+	  SuperType.call(this,name);
+	  this.age = age;
+  }
+  SubType.prototype = new SuperType();
+  SubType.prototype.constructor = SubType;
+  SubType.prototype.sayAge = function(){
+	  alert(this.age);
+  };
+  var instance1 = new SubType("Nichoer", 27);
+  instance1.colors.push("purple");
+  alert(instance1.colors);
+  instance1.sayName();
+  instance1.sayAge();
+
+  var instance2 = new SubType("Mark", 24);
+  alert(instance2.colors);
+  instance2.sayName();
+  instance2.sayAge();
+  </script>
+  
+ </head>
+ <body>
+  
+ </body>
+</html>

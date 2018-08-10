@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>javascript创建对象练习</title>
+ <!--工厂模式、构造函数模式、原型模式-->
+ <script>
+     //工厂模式
+	 /*function createPerson(name, age, job) {
+		 var o = new Object();
+		 o.name = name;
+		 o.age = age;
+		 o.job = job;
+		 o.sayName = function() {
+			 alert(this.name);
+		 }
+		 return o;
+	 }
+	 var person1 = createPerson("Nick", 29, "SoftWare Engineer");
+	 var person2 = createPerson("Greg", 27, "Doctor");
+	 */
+	 //构造函数模式
+	 /*function Person(name, age, job)
+	 {
+		 this.name = name;
+		 this.age = age;
+		 this.job = job;
+		 this.sayName = function(){
+			 alert(this.name);
+		 };
+	 }
+	 var person1 = new Person("Noci", 26, "SoftWare Engineer");
+	 var person2 = new Person("Mary", 24, "Doctor");
+	 */
+	/* //原型模式
+	 //每当代码读取某个对象的某个属性时，都会执行一次搜索，目标是具有给定名字的属性，搜索首先从对象实例本身开始，如果在实例中找到了具有给定名字的属性，则返回该属性的值；如果没有找到，则继续搜索指针指向的原型对象，在原型对象中查找具有给定名字的属性，如果在原型对象中找到了这个属性，则返回该属性的值
+	 function Person() {
+	 }
+	 Person.prototype.name = "Ncholas";
+	 Person.prototype.age = 29;
+	 Person.prototype.job = "Software Engineer";
+	 Person.prototype.sayName = function(){
+		 alert(this.name);
+	 }
+	 var person1 = new Person();
+	// person1.sayName();
+
+	 var person2 = new Person();
+	// person2.sayName();
+	// alert(person1.sayName == person2.sayName);
+	// alert(Person.prototype.isPrototypeOf(person1));//true
+	// alert(Person.prototype.isPrototypeOf(person2));//true
+	// alert(Object.getPrototypeOf(person1) == Person.prototype);
+	// alert(Object.getPrototypeOf(person1).name);//"nicholas"
+	//当为对象实例添加一个属性时，这个属性会屏蔽原型对象中保存的同名属性，使用delete操作符可以完全删除实例属性，从而让我们能够重新访问原型中的属性
+	//使用hasOwnProperty()方法可以检测一个属性是存在于实例中还是存在于原型中，只有给定属性是存在于对象实例中，才会返回true
+	//in操作符会在通过对象能够访问给定属性时返回true，无论该属性是存在于实例中还是原型中alert("name" in person1);
+	person1.name = "Mary";
+	person1.sayName();//来自实例
+	alert(person1.hasOwnProperty("name"));//true
+	alert("name" in person1);
+	person2.sayName();//来自原型
+	alert(person2.hasOwnProperty("name"));//false
+	delete person1.name;
+	alert(person1.name);//来自原型
+	//Object.keys()方法返回一个包含所有可枚举属性的字符串数组
+	var keys = Object.keys(Person.prototype);
+	alert(keys);//"name,age,job,sayName"
+	//判断属性是否存在于对象原型，如果是，返回true
+	//如果想得到所有实例属性，无论是否可枚举，都可以使用Object.geOwnPropertyNames()方法
+	var keys = Object.getOwnPropertyNames(Person.prototype);
+	alert(keys);
+	function hasPrototypeProperty(object, name) {
+		return !object.hasOwnProperty(name) && (name in object);
+	}
+	//更简单的原型语法
+	//注意：这里的constructor属性已经不再指向Person了，而是指向Object构造函数
+	
+	function Friend() {
+	}
+	Friend.prototype = {
+		name : "Nicholas",
+		age : 29,
+		job : "Software Engineer",
+		sayName : function () {
+			alert(this.name);
+		}
+	};
+	var friend = new Friend();
+	alert(friend instanceof Object);//true
+	alert(friend instanceof Friend);//true
+	alert(friend.constructor == Friend);//false
+	alert(friend.constructor == Object);//true
+	//由于在原型中查找值的过程是一次搜索，因此我们对原型对象所做的任何修改都能立即从实例上反映出来，即使是先创建实例后修改原型也照样如此
+	//可以随时为原型添加属性和方法，并且修改能够立即在所有对象中反映出来，但如果是重写整个原型对象，那么情况就不一样了记住：实例中的指针仅指向原型，而不指向构造函数
+	*/
+	//组合使用构造函数模式和原型模式
+	/*function Person(name,age,job){
+		this.name = name;
+		this.age = age;
+		this.job = job;
+		this.friends = ["Shelby","Court"];
+	}
+	Person.prototype = {
+		constructor : Person,
+		sayName : function(){
+			alert(this.name);
+		}
+	}
+
+	var person1 = new Person("Nicos", 25, "Doctor");
+	var person2 = new Person("Gre", 24, "teacher");
+
+	person1.friends.push("van");
+	alert(person1.friends);
+	alert(person2.friends);
+	alert(person1.friends === person2.friends)//false
+	alert(person1.sayName === person2.sayName)//false*/
+	//动态原型模型
+	/*function Person(name, age, job){
+		//属性
+		this.name = name;
+		this.age = age;
+		this.job = job;
+		//方法
+		if(typeof this.sayName != "function"){
+			Person.prototype.sayName = function() {
+				alert(this.name);
+			};
+		}
+	}
+	var friend = new Person("Nicholas", 29, "Soft ");
+	friend.sayName();*/
+	//寄生构造函数模式
+	//稳妥构造函数模式
+ </script>
+
+ </head>
+ <body>
+  
+ </body>
+</html>

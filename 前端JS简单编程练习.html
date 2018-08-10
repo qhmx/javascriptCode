@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>前端js简单编程练习</title>
+ </head>
+ <body>
+  
+
+  <script>
+  //查找数组元素的位置 找出元素item在给定数组arr中的位置
+     /* function findIndex(arr,item)
+	  {
+		  if(Array.prototype.indexOf){//判断浏览器是否支持indexOf方法
+		      return arr.indexOf(item);
+		  }else{
+			  for(var i = 0;i < arr.length;i++)
+			  {
+				  if(arr[i] === item){
+					  return i;
+				  }
+			  }
+		  }
+		  return -1;
+	  }
+	  alert(findIndex([1,4,4,5,6,7],8));*/
+     //查找数组元素的位置 找出元素item在给定数组arr中的位置，规定检索位置 从前往后搜索
+     /* function findIndexFrom(arr,item,start){
+		  if(Array.prototype.indexOf){//判断浏览器是否支持
+			  return arr.indexOf(item,start);
+		  }
+		  else{
+			  for(var i = start;i < arr.length;i++){
+				  if(arr[i] == item){
+					  return i;
+				  }
+			  }
+		  }
+		  return -1;
+
+	  }
+	  alert(findIndexFrom(["ser",true,56,245,"ser",4567],"ser",7));*/
+	  //查找元素最后出现的位置 规定从start处开始检索 从后往前搜索
+	/*  function findLastIndexFrom(arr,item,start){
+		  if(Array.prototype.lastIndexOf){
+			  return arr.lastIndexOf(item,start);
+		  }else{
+			  for(var i = start;i >= 0;i--){
+				  if(arr[i] === item){
+					  return i;
+				  }
+			  }
+		  }
+		  return -1;
+	  }
+	  alert(findLastIndexFrom(["ser",true,56,245,"ser",4567,"ser"],"ser",5));*/
+//计算给定数组arr中所有元素的和
+   /*   function sum(arr){
+		  var sum = 0;
+		  //foreach简化
+		  arr.forEach(function(val){
+			  sum += val;
+		  });
+		  //常规循环
+		//  for(var i = 0;i < arr.length;i++){
+		//	  sum += arr[i];
+		 // }
+		  return sum;
+	  }
+	  alert(sum([1,4,2,56,7]));//70*/
+//移除数组arr中的所有值与item相等的元素。不要直接修改数组arr,结果返回新的数组
+   /*   function remove(arr,item){
+		//  var res = arr.slice();
+		    var res = [].concat(arr);
+		  for (var i = 0;i < res.length ;i++ )
+		  {
+			  if(res[i] === item){
+				  res.splice(i,1);
+			  }
+		  }
+		  return res;
+	  }
+	  //test
+	  alert(remove(["res",45,true,"res",567,false,["res","fds"]],"res")); //45 true 567 false res fds
+	  alert(remove([1,4,5,6,4,3,2,"4"],4));//1 5 6 3 2 4*/
+	  //移除数组的元素，直接在给定数组上进行，返回数组
+	/*  function remove(arr,item){
+		  arr.forEach(function(val,index){
+			  if(val === item) arr.splice(index,1);
+		  });
+		  return arr;
+	  }
+	  alert(remove(["res",45,true,"res",567,false,["res","fds"]],"res")); //45 true 567 false res fds
+	  alert(remove([1,4,5,6,4,3,2,"4"],4));//1 5 6 3 2 4*/
+	  //在数组末尾添加元素，不要直接修改arr,结果返回新的数组
+	 /* function add(arr,item){
+		  var res = [].concat(arr);
+		  res.push(item);
+		  return res;
+	  }
+	  alert(add([1,"der","des",345,true],5));*/
+	  //在数组开头添加元素，不要直接修改arr,结果返回新的数组
+	 /* function add(arr,item){
+		  var res = [].concat(arr);
+		  res.unshift(item);
+		  return res;
+	  }
+	  alert(add([1,"der","des",345,true],5));*/
+	  //合并数组arr1 和数组 arr2，不要直接修改数组arr，结果返回新的数组
+	/*  function concat(arr1,arr2){
+		  var arr = [];
+		  return [].concat(arr1,arr2);
+	  }
+	  alert(concat([1,2,true,"fas"],["saf",true,2,1]));*/
+	  //统计数组中值等于item的元素出现次数
+	/*  function count(arr,item){
+		  var count = 0;
+		  //forEach
+		//  arr.forEach(function(val){
+		//	  if(val === item) count++;
+		//  });
+		//      return count;
+
+		   //for in
+		//  for(var i in arr){
+		//	  if(arr[i] === item) count++;
+		//  }
+		 //    return count;
+
+		   //filter
+		 // return  arr.filter(function(val){ return (val === item);}).length;
+		 
+		 //map
+		 arr.map(function(val){
+			 if(val === item) count++;
+		 });
+		 return count;
+		 
+	  }
+	  alert(count([1,2,"frd",true,"frd",true,false,"true"],true));*/
+	  //找出数组中重复的元素组成的数组
+	 /* function findSame(arr){
+		  var res = [];
+		  arr.sort();
+		  for(var i = 1;i < arr.length;i++){
+			  if(arr[i] === arr[i-1]) res.push(arr[i]);
+		  }
+		  return res;
+	  }
+	  alert(findSame([1,"1",false,3,1,2,"sd",1]));//1 1*/
+
+	  //
+	/*  function findSame(arr){
+		 return arr.filter(function(e,i){
+			 return arr.lastIndexOf(e) != i && i == arr.indexOf(e);
+		 });
+	  }
+	  alert(findSame([1,"1",false,3,1,2,"sd",1]));//1 */
+
+	  //
+	/*  function findSame(arr){
+		  var res = [];
+		  for(var i in arr){
+			  var e = arr[i];
+			  if(arr.indexOf(e) != arr.lastIndexOf(e) && res.indexOf(e) == -1){
+				  res.push(e);
+			  }
+		  }
+		  return res;
+	  }
+	  alert(findSame([1,"1",false,3,1,2,"sd",1,"sd"]));//1,sd*/
+
+	  //
+	 /* function findSame(arr){
+		  var a = [],b = [];
+		  for(var i in arr){
+			  if(!b[arr[i]]){
+				  b[arr[i]] = 1;
+				  continue;
+			  }
+			  b[arr[i]]++;
+			  
+		  }
+		  for(var i in b){
+			  if(b[i] > 1){
+				  a.push(i);
+			  }
+		  }
+		  return a;
+	  }
+	  alert(findSame([1,"1",false,3,1,2,"sd",1,"sd","sd",false]));//1,false,sd */
+    
+	 //实现一个打点计时器 从start到end(包含start,end)每隔100毫秒alert一个数字，每次数字增一，
+	 //返回对象中需要包含一个cancel方法，用于停止定时操作 第一个数需要立即弹出
+
+	/* function time(start,end){
+		 console.log(start++);
+		 function check(){
+			 if(start <= end){
+				 console.log(start++);
+			 }else{
+				 clearInterval(time);
+			 }
+		 }
+		 var time = setInterval(check,10000);
+		 return {
+		     cancel:function(){
+			     clearInterval(time);
+			 }
+		 }
+		 
+	 }
+	 time(3,5);*/
+	 /*
+	 编写一个 times 函数，接收 2 个参数，一个字符串类型 str（如 "abc"），一个是 Number 类型 num （如 3），返回一个字符串（这里是 "abcabcabc"）
+	 */
+	 //简单循环
+	 function times(str,num){
+		 var res = "";
+		 while(num--){
+			 res += str;
+		 }
+		 return res;
+	 }
+	 alert(times('abc',3));
+	 //一行代码显示
+	 function times2(str,num){
+		 return new Array(num+1).join(str)
+	 }
+	 alert(times2('主流',3));
+  </script>
+ </body>
+</html>
